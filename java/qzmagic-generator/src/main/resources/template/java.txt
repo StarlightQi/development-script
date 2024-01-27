@@ -1,0 +1,11 @@
+import lombok.Data;
+
+/**
+ * ${tableComment} ${tableName}
+ *
+ * @author 笔落
+ */
+@Data
+public class ${tableName} {
+${columnListStr}
+}
