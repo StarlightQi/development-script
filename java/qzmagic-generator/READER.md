@@ -17,3 +17,7 @@ MYSQL_USER        MySQL 链接用户
 MYSQL_PASSWORD    MySQL 密码 
 ```
 或者去application.yaml 配置自己的数据库
+
+
+更新日志：
+2024年1月29日 根据Mapper层自动生成controller层，json请求，p1 代表第一个参数，p2代表第一个以此类推

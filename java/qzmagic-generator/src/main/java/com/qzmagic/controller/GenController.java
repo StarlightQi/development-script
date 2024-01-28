@@ -39,4 +39,5 @@ public class GenController {
         return genTableService.createJavaTemplate(tableName);
     }
 
+
 }

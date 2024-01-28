@@ -3,6 +3,7 @@ package com.qzmagic.mapper;
 
 import com.qzmagic.domain.GenTable;
 import com.qzmagic.domain.GenTableColumn;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  *
  * @author software
  */
+@Mapper
 public interface GenTableMapper {
 
     /**
