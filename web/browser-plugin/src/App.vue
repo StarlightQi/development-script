@@ -1,18 +1,21 @@
 <template>
   <div>
-    <h1>Hello Vue 3 + TypeScript!</h1>
   </div>
 </template>
 
+
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElMessage} from 'element-plus'
 
 export default defineComponent({
   name: 'App',
+  components: {
+  },
   mounted() {
-    setInterval(()=>{
-      console.log("插件加载成功")
-    },1000)
+      ElMessage.error('插件加载成功');
+  },
+  methods:{
   }
 });
 </script>

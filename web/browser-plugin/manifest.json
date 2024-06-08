@@ -25,6 +25,7 @@
         "https://*/*"
       ],
       "css": [
+        "style.css"
       ],
       "js": [
         "browser.umd.js"
