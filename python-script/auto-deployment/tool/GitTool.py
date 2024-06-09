@@ -1,38 +1,10 @@
-import os
-import subprocess
-import utils.file_utils as file
+from Tool import Tool
 
 
-class GitTool:
+class GitTool(Tool):
     """
     Git 常用命令处理工具类
     """
-
-    def __init__(self, directory=None, is_create=False):
-        """
-        初始化对象
-        :param directory: 绝对路径
-        """
-        self.directory = directory
-        if self.directory is None:
-            self.directory = os.getcwd()
-        # 切换目录
-        os.chdir(self.directory)
-        # 自动创建目录
-        if is_create:
-            file.create_directory_tree(directory)
-
-    def run_command(self, command):
-        """
-        运行命令
-        """
-        try:
-            if type(command) == str:
-                command = command.split(" ")
-            result = subprocess.check_output(command, stderr=subprocess.STDOUT)
-            return result
-        except subprocess.CalledProcessError as e:
-            print(f"执行命令出错了：{e.output.decode()}")
 
     def run_command_all(self, commands):
         """
