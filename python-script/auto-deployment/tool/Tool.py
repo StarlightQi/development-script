@@ -9,15 +9,32 @@ class Tool:
         初始化对象
         :param directory: 绝对路径
         """
+        self.original_path = os.getcwd()
+
         self.logs = []
         self.directory = directory
         if self.directory is None:
-            self.directory = os.getcwd()
+            self.directory = self.original_path
         # 切换目录
         os.chdir(self.directory)
         # 自动创建目录
         if is_create:
             file.create_directory_tree(directory)
+
+    def check_dir(self, path):
+        """
+        切换工作路径
+        :param path:
+        :return:
+        """
+        os.chdir(path)
+
+    def check_original(self):
+        """
+        切换回原工作路径
+        :return:
+        """
+        os.chdir(self.original_path)
 
     def run_command(self, command):
         """
