@@ -4,6 +4,18 @@ import utils.file_utils as file
 
 
 class Tool:
+    colors = {
+        "black": "\033[30m",
+        "red": "\033[31m",
+        "green": "\033[32m",
+        "yellow": "\033[33m",
+        "blue": "\033[34m",
+        "magenta": "\033[35m",
+        "cyan": "\033[36m",
+        "white": "\033[37m",
+        "reset": "\033[0m"
+    }
+
     def __init__(self, directory=None, is_create=False):
         """
         初始化对象
@@ -78,6 +90,18 @@ class Tool:
         # if not os.path.exists(path):
         #     raise ValueError(f"Specified path does not exist:{path}")
         return path
+
+    def copy_to_clipboard_windows(self, text):
+        # 使用 clip 命令将文本复制到剪贴板
+        command = 'echo | set /p nul=' + text.strip() + '| clip'
+        subprocess.run(command, shell=True)
+
+    def print_colored_text(self, text, color):
+        colors = Tool.colors
+        # 获取指定颜色的 ANSI 代码，如果颜色不存在则重置颜色
+        color_code = colors.get(color, colors["reset"])
+        # 打印带颜色的文本后重置颜色，以避免影响后续的输出
+        print(color_code + text + colors["reset"])
 
     def log_add(self, log):
         """
