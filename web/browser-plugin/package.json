@@ -4,7 +4,7 @@
   "description": "浏览器插件",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build&vite build --mode devtools"
   },
   "devDependencies": {
     "@babel/register": "^7.24.6",

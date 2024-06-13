@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
   "name": "browser",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "browser",
   "author": "test",
+  "devtools_page": "index.html",
   "action": {
     "default_icon": {
       "16": "assets/icon-16.png",
@@ -34,31 +35,20 @@
       "all_frames": true
     }
   ],
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "*/*.js"
-      ],
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ]
-    },
-    {
-      "resources": [
-        "chunks/*-*.js",
-        "browser.umd.js"
-      ],
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ]
-    }
-  ],
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ],
+    "persistent": true
+  },
   "permissions": [
-    "identity",
+    "webRequest",
+    "webRequestBlocking",
     "storage",
     "tabs",
-    "scripting"
+    "http://*/*",
+    "https://*/*",
+    "contextMenus",
+    "chrome://favicon/"
   ]
 }

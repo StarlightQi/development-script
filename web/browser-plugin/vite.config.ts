@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import copy from 'rollup-plugin-copy';
 import AutoImport from 'unplugin-auto-import/vite'
 
-export default defineConfig({
+const main = {
     plugins: [
         vue(),
         AutoImport({
@@ -14,6 +14,7 @@ export default defineConfig({
         copy({
             targets: [
                 {src: "manifest.json", dest: "dist"},
+                {src: "index.html", dest: "dist"},
                 {src: "assets/*", dest: "dist/assets"},
             ],
             hook: 'writeBundle'
@@ -28,16 +29,46 @@ export default defineConfig({
         lib: {
             entry: "src/main.ts",
             name: "browser",
-            fileName: (name) => `browser.${name}.js`,
-            formats:['umd']
+            fileName: (name: string) => `browser.${name}.js`,
+            formats: ['umd']
         },
         rollupOptions: {
             external: [],
             output: {
                 globals: {},
                 format: 'umd',
-                name:"browser"
+                name: "browser"
             }
         }
     }
+}
+
+const devtools = {
+    build: {
+        rollupOptions: {
+            input: {
+                devtools: "src/chrome/devtools.ts",  // 独立入口
+            },
+            output: {
+                format: 'es',  // ES模块格式
+                dir: 'dist/plugin',  // 输出目录
+                entryFileNames:()=>{
+                    return '[name].js';  // 默认输出文件名
+                },
+            }
+        }
+    }
+}
+
+
+// @ts-ignore
+export default defineConfig(({mode}) => {
+    if (mode == "devtools") {
+        return devtools;
+    } else {
+        return main
+    }
 });
+
+
+

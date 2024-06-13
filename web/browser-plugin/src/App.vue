@@ -5,17 +5,15 @@
 
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { ElMessage} from 'element-plus'
+import {defineComponent} from 'vue';
+import {ElMessage} from 'element-plus'
 
 export default defineComponent({
   name: 'App',
-  components: {
-  },
+  components: {},
   mounted() {
-      ElMessage.error('插件加载成功');
+    ElMessage.error('插件加载成功');
   },
-  methods:{
-  }
+  methods: {}
 });
 </script>
