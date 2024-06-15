@@ -60,15 +60,30 @@ const devtools = {
     }
 }
 
+const loadScript = {
+    build: {
+        rollupOptions: {
+            input: {
+                load: "src/load.ts",  // 独立入口
+            },
+            output: {
+                format: 'es',  // ES模块格式
+                dir: 'dist/load',  // 输出目录
+                entryFileNames:()=>{
+                    return '[name].js';  // 默认输出文件名
+                },
+            }
+        }
+    }
+}
+
+const configMap={
+    "devtools":devtools,
+    "load":loadScript
+}
 
 // @ts-ignore
 export default defineConfig(({mode}) => {
-    if (mode == "devtools") {
-        return devtools;
-    } else {
-        return main
-    }
+    const config=configMap[mode]
+    return config||main;
 });
-
-
-

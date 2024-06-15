@@ -29,18 +29,18 @@
         "style.css"
       ],
       "js": [
-        "browser.umd.js"
+        "load/load.js"
       ],
       "run_at": "document_end",
       "all_frames": true
     }
   ],
-  "background": {
-    "scripts": [
-      "scripts/background.js"
-    ],
-    "persistent": true
-  },
+  "web_accessible_resources": [
+    {
+      "resources": ["browser.umd.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "permissions": [
     "webRequest",
     "webRequestBlocking",
