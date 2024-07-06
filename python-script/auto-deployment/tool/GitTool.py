@@ -1,4 +1,5 @@
 from Tool import Tool
+import sqlite3
 
 
 class GitTool(Tool):

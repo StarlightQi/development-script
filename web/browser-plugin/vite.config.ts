@@ -48,6 +48,7 @@ const devtools = {
         rollupOptions: {
             input: {
                 devtools: "src/chrome/devtools.ts",  // 独立入口
+                background: "src/chrome/background.ts",  // 独立入口
             },
             output: {
                 format: 'es',  // ES模块格式
@@ -76,6 +77,7 @@ const loadScript = {
         }
     }
 }
+
 
 const configMap={
     "devtools":devtools,

@@ -4,13 +4,13 @@
 
     function interceptFetch() {
         window.fetch = async function(...args) {
-            console.log('Intercepted fetch:', args);
+            // console.log('Intercepted fetch:', args);
             return originalFetch.apply(this, args);
         };
     }
     function interceptXHR() {
         XMLHttpRequest.prototype.send = function(body) {
-            console.log('Intercepted XMLHttpRequest:', body);
+            // console.log('Intercepted XMLHttpRequest:', body);
             originalXHR.call(this, body);
         };
     }

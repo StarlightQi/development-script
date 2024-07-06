@@ -41,14 +41,13 @@
       "matches": ["<all_urls>"]
     }
   ],
+  "background": {
+    "service_worker": "plugin/background.js"
+  },
   "permissions": [
     "webRequest",
-    "webRequestBlocking",
     "storage",
     "tabs",
-    "http://*/*",
-    "https://*/*",
-    "contextMenus",
-    "chrome://favicon/"
+    "contextMenus"
   ]
 }
