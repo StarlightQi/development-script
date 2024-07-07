@@ -78,10 +78,31 @@ const loadScript = {
     }
 }
 
-
+const dev={
+    plugins: [vue()],
+    server: {
+        host: 'localhost', // 本地开发服务器的主机名
+        port: 3000,        // 开发服务器的端口号
+        open: true,        // 自动在浏览器中打开
+        // proxy: {
+        //     // 代理设置，示例中将所有 /api 的请求代理到后端服务器
+        //     '/api': {
+        //         target: 'http://backend.local', // 后端服务器地址
+        //         changeOrigin: true,
+        //         rewrite: (path) => path.replace(/^\/api/, '')
+        //     }
+        // }
+    },
+    resolve: {
+        alias: {
+            '@': '/src' // 方便导入 src 目录下的模块
+        }
+    }
+}
 const configMap={
     "devtools":devtools,
-    "load":loadScript
+    "load":loadScript,
+    "dev":dev,
 }
 
 // @ts-ignore

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "浏览器插件",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
     "build": "vite build&vite build --mode devtools&vite build --mode load",
     "devtools": "vite build --mode devtools",
     "load": "vite build --mode load"
