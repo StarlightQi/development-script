@@ -1,0 +1,31 @@
+{
+  "bin": "main.js",
+  "name": "node_simple_proxy",
+  "version": "0.0.1",
+  "scripts": {
+    "pkg": "pkg . -t  windows --out-path dist/",
+    "dev": "node main"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "http-proxy": "^1.18.1",
+    "https-proxy-agent": "^7.0.5"
+  },
+  "pkg": {
+    "scripts": [
+      "./src/*.js",
+      "./src/*/*.js"
+    ],
+    "targets": [
+      "windows",
+      "mac"
+    ],
+    "assets": [
+      "./src/assets/**/*",
+      "./node_modules/axios/dist/node"
+    ]
+  },
+  "_moduleAliases": {
+    "@": "."
+  }
+}
