@@ -53,7 +53,7 @@ const devtools = {
             output: {
                 format: 'es',  // ES模块格式
                 dir: 'dist/plugin',  // 输出目录
-                entryFileNames:()=>{
+                entryFileNames: () => {
                     return '[name].js';  // 默认输出文件名
                 },
             }
@@ -70,7 +70,7 @@ const loadScript = {
             output: {
                 format: 'es',  // ES模块格式
                 dir: 'dist/load',  // 输出目录
-                entryFileNames:()=>{
+                entryFileNames: () => {
                     return '[name].js';  // 默认输出文件名
                 },
             }
@@ -78,7 +78,7 @@ const loadScript = {
     }
 }
 
-const dev={
+const dev = {
     plugins: [vue()],
     server: {
         host: 'localhost', // 本地开发服务器的主机名
@@ -99,14 +99,36 @@ const dev={
         }
     }
 }
-const configMap={
-    "devtools":devtools,
-    "load":loadScript,
-    "dev":dev,
+
+
+const popup = {
+    plugins: [vue()],
+    root: 'src/popup', // 设置项目的根目录\
+    base: '/popup/',
+    resolve: {
+        alias: {
+            '@': '/src' // 方便导入 src 目录下的模块
+        }
+    },
+    build: {
+        outDir: './../../dist/popup', // 指定输出目录
+        rollupOptions: {
+            input: {
+                main:'src/popup/main.ts', // 明确指定入口文件
+                index: 'src/popup/index.html',
+            }
+        }
+    }
+}
+const configMap = {
+    "devtools": devtools,
+    "load": loadScript,
+    "dev": dev,
+    "popup":popup,
 }
 
 // @ts-ignore
 export default defineConfig(({mode}) => {
-    const config=configMap[mode]
-    return config||main;
+    const config = configMap[mode]
+    return config || main;
 });
